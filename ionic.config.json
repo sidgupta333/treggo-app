@@ -1,0 +1,7 @@
+{
+  "name": "treggo-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

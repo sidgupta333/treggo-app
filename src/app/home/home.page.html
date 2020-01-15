@@ -1,0 +1,44 @@
+<ion-content view-title="Treggo APP" class="login-pane">
+
+    <div style="margin-top: 10vh;" class="flex-container-vertical">
+        <img class="img-head" src="assets/images/Treggo-header.png" />
+        <br>
+        <img src="assets/images/header-2.png" />
+
+        <div class="flex-container-vertical box-size">
+
+            <form [@Animation1] *ngIf="!otpDisplayed" class="flex-container-vertical" [formGroup]="loginForm">
+
+                <ion-item class="form-styling">
+                    <ion-label position="floating">Full Name</ion-label>
+                    <ion-input type="text" formControlName="name"></ion-input>
+                </ion-item>
+                <br>
+                <ion-item class="form-styling">
+                    <ion-label position="floating">Phone Number</ion-label>
+                    <ion-input type="number" onKeyPress="if(this.value.length==10) return false;" formControlName="phone"></ion-input>
+                </ion-item>
+                <br>
+                <ion-button class="btn-standard" type="submit" color="primary" expand="block" (click)="enterOTP()">Send OTP
+                </ion-button>
+            </form>
+
+
+            <!-- OTP FORM -->
+            <form [@Animation1] *ngIf="otpDisplayed" class="flex-container-vertical" [formGroup]="otpForm" (ngSubmit)="submitOTP()">
+
+                <ion-item class="form-styling">
+                    <ion-label position="floating">ENTER OTP</ion-label>
+                    <ion-input onKeyPress="if(this.value.length==6) return false;" id="partitioned" type="number" formControlName="otp"></ion-input>
+                </ion-item>
+                <br>
+                <ion-button size="large" class="btn-standard" type="submit" color="primary" expand="block">VALIDATE
+                </ion-button>
+
+                <br>
+                <a (click)="switchToPhone()" style="text-decoration: underline; cursor: pointer; color: white;"> Resend? </a>
+            </form>
+        </div>
+    </div>
+
+</ion-content>

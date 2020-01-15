@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button style="color: rgb(42, 129, 170)"></ion-menu-button>
+        </ion-buttons>
+        <ion-title><span style="float: left; width: 80%; text-align: left;">ORDER STATUS </span>
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <div *ngIf="order != null">
+        <div class="flex-container-horizontal">
+            <img *ngIf="currentStatus != 'COMPLETED' && currentStatus != 'CLOSED'" src="../../../assets/images/giphy.gif" height="300">
+            <img *ngIf="currentStatus == 'COMPLETED' || currentStatus == 'CLOSED'" src="../../../assets/images/correct.png" height="300">
+        </div>
+        <br>
+        <br>
+        <div class="flex-container-vertical">
+            <h4> <span style="font-weight: lighter; padding-bottom: 2px; border-bottom: 1px solid white;">CURRENT
+                    STATUS:
+                </span> </h4>
+
+            <h1 *ngIf="currentStatus != 'COMPLETED'"><span style="font-weight: bold; padding-bottom: 2px; color: rgb(241, 228, 23);"> {{currentStatus}} </span>
+            </h1>
+
+            <h1 *ngIf="currentStatus == 'COMPLETED'"><span style="font-weight: bold; padding-bottom: 2px; color: rgb(56, 243, 23);"> COMPLETED </span></h1>
+
+            <div></div>
+            <div style="margin-top: 15vh;" class="flex-container-horizontal">
+                <ion-button (click)="navigateToDashboard()" color="success">Order Again?</ion-button> &nbsp;
+                <ion-button *ngIf="currentStatus == 'COMPLETED'" (click)="closeOrder()" color="danger">Complete Order
+                </ion-button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="order == null" class="flex-container-vertical">
+        <h5 style="color: rgb(155, 152, 158); margin-top: 45vh;"> NO ITEMS IN CART</h5>
+    </div>
+
+</ion-content>

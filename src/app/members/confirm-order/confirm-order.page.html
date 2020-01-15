@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/dashboard"></ion-back-button>
+        </ion-buttons>
+        <ion-title>ORDER SUMMARY</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="orderItems.items.length > 0">
+        <div class="grid-structure">
+            <div *ngFor="let item of orderItems.items" class="child-structure">
+                <p>
+                    {{item.dish_name}}
+                </p>
+                <p></p>
+                <p class="price-styling">
+                    {{item.base_price}} X {{item.count}}
+                </p>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex-container-horizontal">
+            <ion-item style="width: 190px;">
+                <ion-label position="floating">Apply Promocode?</ion-label>
+                <ion-input [(ngModel)]="couponCode" type="text"></ion-input>
+            </ion-item> &nbsp;
+
+            <ion-button [disabled]="couponCode == ''" (click)="applyCoupon()" color="success">Apply</ion-button>
+
+            <ion-icon (click)="removeCoupon()" *ngIf="(backupTotal - grandTotal) != 0" style="margin-left: 10px; color: red; border: 1px solid red; border-radius: 30px;" name="close"></ion-icon>
+
+
+        </div>
+
+        <br>
+        <br>
+        <div class="flex-container-vertical summary-container">
+            <div class="summary-header">
+                <ion-icon name="ios-paper"></ion-icon> &nbsp; SUMMARY
+            </div>
+            <br>
+            <div class="grid-total">
+                <span> Item Total</span>
+                <span style="font-weight: bolder; justify-self: end;"> {{total}} ₹</span>
+                <span style="margin-top: 10px;"> Taxes (CGST & SGST)</span>
+                <span style="font-weight: bolder; justify-self: end; margin-top: 10px; padding-bottom: 10px;"> {{taxAmount}} ₹</span>
+                <span *ngIf="(backupTotal - grandTotal) != 0" style="margin-top: 10px; color: #A8F82F;"> Discount Applied: </span>
+                <span *ngIf="(backupTotal - grandTotal) != 0" style="font-weight: bolder; color: #A8F82F; justify-self: end; margin-top: 10px; padding-bottom: 10px;"> {{(backupTotal - grandTotal).toFixed(2)}} ₹</span>
+                <span style="text-decoration: underline; font-size: 16px; margin-top: 20px;">GRAND TOTAL</span>
+                <span style="font-weight: bolder; justify-self: end; font-size: 16px; margin-top: 20px;"> {{grandTotal}} ₹ </span>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="orderItems.items.length == 0" class="flex-container-vertical">
+        <h5 style="color: rgb(155, 152, 158); margin-top: 45vh;"> NO ITEMS IN CART</h5>
+    </div>
+
+</ion-content>
+
+<ion-footer *ngIf="orderItems.items.length > 0">
+    <ion-toolbar>
+        <ion-button (click)="completeOrder()" expand="full" size="large" color="primary">CONFIRM ORDER</ion-button>
+    </ion-toolbar>
+</ion-footer>

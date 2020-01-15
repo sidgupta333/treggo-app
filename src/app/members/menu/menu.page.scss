@@ -1,0 +1,13 @@
+.menu-header {
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 3vh;
+    border-bottom: 1px solid black;
+}
+
+.menu-item {
+    margin-left: 8vw;
+}

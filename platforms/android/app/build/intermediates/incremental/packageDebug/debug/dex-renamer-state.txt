@@ -1,0 +1,4 @@
+#Thu Dec 19 23:51:10 IST 2019
+base.0=D\:\\Projects\\Treggo-app\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+renamed.0=classes.dex
+file.0=D\:\\Projects\\Treggo-app\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

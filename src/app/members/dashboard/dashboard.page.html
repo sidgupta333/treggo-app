@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button style="color: rgb(42, 129, 170)"></ion-menu-button>
+        </ion-buttons>
+        <ion-title><span style="float: left; width: 80%; text-align: left;">TREGGO </span>
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <div class="flex-container-vertical page-layout">
+        <p class="">Highlights of Restaurant</p>
+    </div>
+
+    <!-- Image sliders with dynamic images -->
+    <ion-slides pager="true" [options]="slidesConfig" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
+        <ion-slide *ngFor="let s of bannersUrls">
+            <img style="width: 100%; height: 250px;" [src]="s">
+
+        </ion-slide>
+    </ion-slides>
+
+
+
+    <ion-card style="margin-top: 25px;" *ngFor="let category of dishes; let i = index">
+        <ion-card-header class="accordion-header flex-container-horizontal" (click)="toggleAccordion(i)">
+            <ion-icon name="arrow-down"></ion-icon> &nbsp; {{category.category_name}} &nbsp;
+            <ion-icon name="arrow-down"></ion-icon>
+        </ion-card-header>
+        <ion-card-content class="accordion-content" [ngClass]="{active: accordionExpanded[i]}">
+            <div class="dish-flex">
+
+                <div *ngFor="let dish of category.dishes" class="dish-card">
+                    <div class="dish-header">{{ dish.dish_name}} </div>
+                    <img class="dish-img" [src]="dish.imgUrl">
+                    <ion-button [@Animation1] *ngIf="dish.count == 0" (click)="addCount(dish)" style="margin: 0; margin-top: 5px;" expand="full" color="success">ADD</ion-button>
+
+
+                    <div class="flex-container-horizontal" [@Animation1] *ngIf="dish.count != 0">
+                        <ion-button (click)="minusCount(dish)" color="danger"> - </ion-button>
+                        <div class="count-text"><span>{{dish.count}}</span></div>
+                        <ion-button (click)="addCount(dish)" color="success"> + </ion-button>
+                    </div>
+                </div>
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button (click)="completeOrder()" expand="full" size="large" color="primary">CONTINUE</ion-button>
+    </ion-toolbar>
+</ion-footer>

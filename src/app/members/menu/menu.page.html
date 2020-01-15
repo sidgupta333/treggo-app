@@ -1,0 +1,34 @@
+<ion-menu side="start" type="overlay" contentid="content">
+    <ion-header>
+        <div class="menu-header">
+
+            <img style="width: 60%;" src="../../../assets/images/Treggo-header.png">
+            <img style="width: 60%;" src="../../../assets/images/header-2.png">
+        </div>
+
+    </ion-header>
+
+
+    <ion-content>
+        <ion-list>
+            <ion-menu-toggle auto-hide="true">
+                <ion-item (click)="navigateToDashboard()" routerDirection="root">
+                    <ion-icon name="home" color="light"></ion-icon>
+                    <span class="menu-item"> Home</span>
+                </ion-item>
+
+                <ion-item (click)="navigateToStatus()" routerDirection="root">
+                    <ion-icon name="ios-barcode" color="light"></ion-icon>
+                    <span class="menu-item"> Order Status</span>
+                </ion-item>
+
+                <ion-item (click)="navigateToMyOrders()" routerDirection="root">
+                    <ion-icon name="ios-barcode" color="light"></ion-icon>
+                    <span class="menu-item"> My Orders</span>
+                </ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="content" main></ion-router-outlet>

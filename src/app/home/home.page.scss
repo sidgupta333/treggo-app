@@ -1,0 +1,29 @@
+.login-pane {
+    --background: none;
+    background: url('../../assets/images/bg.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.img-head {
+    width: 60vw;
+}
+
+.box-size {
+    margin-top: 15vh;
+    width: 90vw;
+    height: 280px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5%;
+}
+
+.form-styling {
+    --background: none;
+    width: 90vw;
+    height: 60px;
+}
+
+#partitioned {
+    letter-spacing: 10vw;
+}
